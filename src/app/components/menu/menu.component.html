@@ -1,0 +1,58 @@
+<div class="container">
+  <h4 class="h4" style="text-align: center; font-family: 'Comic Sans MS',serif">Main</h4>
+  <hr><br>
+  <div class="row" style="margin-top: 100px">
+    <div class="col-lg-4" *ngFor="let menu of menus" style="margin-bottom: 20px">
+      <div class="menu-grid6">
+        <div class="menu-image6" style="margin: 0 40px 0 40px">
+            <img class="pic-1" src="../../../assets/images/menus/{{menu.menuId}}.png" alt="menu {{menu.menuId}}">
+        </div>
+        <div class="menu-content">
+          <h3 class="title"><a>Menu {{menu.menuId}}</a></h3>
+          <div class="price">{{menu.menuId}}€</div>
+        </div>
+        <ul class="social">
+          <li><a class="pointerHand" data-tip="Add to cart" (click)="getSelectedMenu(menu)" data-toggle="modal" data-target="#myModal"><i class="fa fa-shopping-cart"></i></a></li>
+        </ul>
+      </div>
+
+      <!-- The Modal -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Menu {{selectedMenu.menuId}}</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <h3>Choose your side</h3>
+              <div class="form-check-inline" *ngFor="let product of products">
+                <label class="form-check-label" *ngIf="product.productTypeId==2">
+                  <input type="radio" class="form-check-input" name="optradio" required="">
+                  <img class="pic-1" src="../../../assets/images/products/{{product.productId}}.png" alt="side-{{product.productId}}" width="100px" height="100px">
+                </label>
+              </div>
+            <hr>
+              <h3>Choose your drink</h3>
+              <div class="form-check-inline" *ngFor="let product of products">
+                <label class="form-check-label" *ngIf="product.productTypeId==3">
+                  <input type="radio" class="form-check-input" name="optradio2" required="">
+                  <img class="pic-1" src="../../../assets/images/products/{{product.productId}}.png" alt="drink-{{product.productId}}" width="100px" height="100px">
+                </label>
+              </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

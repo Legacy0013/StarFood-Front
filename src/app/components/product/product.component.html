@@ -1,0 +1,114 @@
+<div class="container" style="margin-top: 20px">
+
+  <!--  <ul class="breadcrumb">
+      <li class="breadcrumb-item"><a href="">Category</a></li>
+      <li class="breadcrumb-item active">{{selectedProduct.productTypeId}}</li>
+    </ul>-->
+
+  <div class="row" >
+    <div class="col-lg-3" id="bottomMargin" *ngFor="let order of productOrders">
+      <div class="product-grid6">
+        <div class="product-image6">
+          <img class="pic-1" src="../../../assets/images/products/{{order.product.productId}}.png" alt="{{order.product.productId}}">
+        </div>
+        <div class="product-content">
+          <h3 class="title"><a>{{order.product.productLangsByProductId[0].productLangShortDescription}}</a></h3>
+          <div class="price">{{order.product.productPrice}}€</div>
+        </div>
+        <ul class="social">
+            <li *ngIf="order.product.productTypeId!=9"><a class="pointerHand" data-tip="Quick View" (click)="getSelectedProduct(order.product)" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i></a></li>
+            <li *ngIf="order.product.productTypeId!=9"><a class="pointerHand" data-tip="Add to Cart" (click)="addToCart(order)"><i class="fa fa-shopping-cart"></i></a></li>
+          <li *ngIf="order.product.productTypeId==9"><a class="pointerHand" data-tip="Add to Cart" (click)="getSelectedProduct(order.product); addToCart(order)" data-toggle="modal" data-target="#myModal"><i class="fa fa-shopping-cart"></i></a></li>
+          </ul>
+
+      </div>
+    </div>
+      <!-- The Modal Menus -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">{{selectedProduct.productLangsByProductId[0].productLangShortDescription}}</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" *ngIf="selectedProduct.productTypeId!=9">
+              {{selectedProduct.productLangsByProductId[0].productLangLongDescription}}
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" *ngIf="selectedProduct.productTypeId==9">
+              <h3>Choose your side</h3>
+              <div class="form-check-inline" *ngFor="let side of sideProducts">
+                <div class="product-image6">
+                  <a (click)="banane(side)" data-toggle="modal" data-target="#mamadoul"><img class="pic-1" src="../../../assets/images/products/{{side.productId}}.png" alt="{{side.productId}}"></a>
+                </div>
+                <div class="product-content">
+                  <h3 class="title"><a>{{side.productLangsByProductId[0].productLangShortDescription}}</a></h3>
+                  <div class="price">{{side.productPrice}}€</div>
+                </div>
+              </div>
+
+
+              <!-- The Modal Menus -->
+              <div class="modal fade" id="mamadoul">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Chose your drink</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <h3>Choose your drink</h3>
+                      <div class="form-check-inline" *ngFor="let drink of drinkProducts">
+                        <div *ngIf="drink.productTypeId==3">
+                        <div class="product-image6">
+                          <a data-dismiss="modal" (click)="banane(drink)"><img class="pic-1" src="../../../assets/images/products/{{drink.productId}}.png" alt="{{drink.productId}}"></a>
+                        </div>
+                        <div class="product-content">
+                          <h3 class="title"><a>{{drink.productLangsByProductId[0].productLangShortDescription}}</a></h3>
+                          <div class="price">{{drink.productPrice}}€</div>
+                        </div>
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

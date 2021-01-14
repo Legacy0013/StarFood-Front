@@ -1,0 +1,19 @@
+<div class="card text-white bg-dark mb-3 justify-content-end" style="margin-top: 100px; width: 600px">
+      <h2 class="card-header text-center">Order resume</h2>
+  <div class="card-body">
+    <div class="card-title text-left">
+        <ul>
+          <li *ngFor="let order of orders.productOrders" style="list-style: none">
+            <h6>{{ order.product.productLangsByProductId[0].productLangShortDescription }} x {{ order.quantity}} - {{ order.product.productPrice }}€</h6>
+          </li>
+        </ul>
+  </div>
+      <h5 class="card-title text-right">Total amount: {{ total }}€</h5>
+
+      <button class="btn btn-light btn-block" (click)="pay()" *ngIf="!paid">Pay</button>
+
+      <div class="alert alert-success" role="alert" *ngIf="paid">
+        <strong>Congratulation!</strong> You successfully made the order.
+      </div>
+  </div>
+</div>

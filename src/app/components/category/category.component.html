@@ -1,0 +1,16 @@
+<div class="container" style="margin-top: 20px">
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let category of categories" style="margin-bottom: 20px">
+      <div class="category-grid6 pointerHand">
+          <div class="category-image6" style="margin: 0 40px 0 40px">
+            <a (click)="getProductsByCategory(category.categoryId)">
+              <img class="pic-1" src="../../../assets/images/categories/{{category.categoryId}}.png" alt="category {{category.categoryId}}">
+            </a>
+          </div>
+          <div class="category-content">
+            <h3 class="title"><a>{{category.categoryLangsByCategoryId[0].categoryLangShortDescription}}</a></h3>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
